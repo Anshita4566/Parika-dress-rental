@@ -1,4 +1,4 @@
-# Rento — Online Dress Rental Platform
+# Parika — Online Dress Rental Platform
 
 A full-stack dress rental web app: browse dresses, pick rental dates, and book —
 with **real-time date-overlap conflict checking** so two customers can never
