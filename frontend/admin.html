@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Admin Panel — Rento</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:wght@500;600&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css?v=2" />
+</head>
+<body>
+
+  <nav class="navbar">
+    <a href="index.html" class="logo">Parika<span>.</span></a>
+    <div class="nav-links" id="nav-auth-slot"></div>
+  </nav>
+
+  <h2 class="section-title">Dashboard overview</h2>
+  <div class="stats-row" id="stats-row">
+    <div class="stat-card"><span class="stat-label">Total Revenue</span><span class="stat-value" id="stat-revenue">—</span></div>
+    <div class="stat-card"><span class="stat-label">Total Bookings</span><span class="stat-value" id="stat-bookings">—</span></div>
+    <div class="stat-card"><span class="stat-label">Cancelled</span><span class="stat-value" id="stat-cancelled">—</span></div>
+  </div>
+
+  <div class="charts-row">
+    <div class="chart-box">
+      <h4>Monthly Revenue</h4>
+      <canvas id="revenue-chart"></canvas>
+    </div>
+    <div class="chart-box">
+      <h4>Top 5 Most Rented Dresses</h4>
+      <canvas id="top-products-chart"></canvas>
+    </div>
+  </div>
+
+  <h2 class="section-title" id="form-heading">Add a new dress</h2>
+  <div class="admin-form">
+    <form id="product-form">
+      <input type="hidden" id="p-id" value="" />
+      <input type="text" id="p-name" placeholder="Dress name" required />
+      <textarea id="p-desc" placeholder="Description" rows="3" required></textarea>
+      <input type="text" id="p-category" placeholder="Category (e.g. Party Wear, Wedding)" required />
+      <input type="text" id="p-size" placeholder="Sizes, comma separated (e.g. S, M, L, XL)" required />
+      <input type="text" id="p-color" placeholder="Color" />
+      <select id="p-gender" required>
+        <option value="">Select Gender</option>
+        <option value="Female">Female</option>
+        <option value="Male">Male</option>
+      </select>
+      <input type="url" id="p-image" placeholder="Photo URL (optional — leave blank if you don't have one yet)" />
+      <input type="number" id="p-price" placeholder="Rent price per day (₹)" required />
+      <input type="number" id="p-deposit" placeholder="Security deposit (₹)" />
+      <input type="number" id="p-qty" placeholder="Total quantity available (e.g. 1)" value="1" />
+      <div style="display:flex; gap:10px;">
+        <button type="submit" class="btn btn-primary" style="flex:1;">Save Dress</button>
+        <button type="button" id="cancel-edit-btn" class="btn btn-outline" style="display:none;">Cancel</button>
+      </div>
+      <p id="product-msg" class="form-msg"></p>
+    </form>
+  </div>
+
+  <h2 class="section-title">All dresses</h2>
+  <div class="table-wrap">
+    <table>
+      <thead>
+        <tr><th>Name</th><th>Category</th><th>Price</th><th>Qty</th><th>Action</th></tr>
+      </thead>
+      <tbody id="admin-product-list"><tr><td colspan="5">Loading...</td></tr></tbody>
+    </table>
+  </div>
+
+   <h2 class="section-title">All bookings</h2>
+  <div class="table-wrap">
+    <table>
+      <thead>
+        <tr><th>Customer</th><th>Dress</th><th>Pickup</th><th>Return</th><th>Total</th><th>Status</th><th>Action</th></tr>
+      </thead>
+      <tbody id="admin-bookings-list"><tr><td colspan="7">Loading...</td></tr></tbody>
+    </table>
+  </div>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.0/chart.umd.min.js"></script>
+  <script src="js/api.js"></script>
+  <script src="js/admin.js"></script>
+</body>
+</html>

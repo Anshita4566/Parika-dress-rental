@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Sign Up — Rento</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:wght@500;600&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css?v=2" />
+</head>
+<body>
+
+  <nav class="navbar">
+    <a href="index.html" class="logo">Parika<span>.</span></a>
+    <div class="nav-links" id="nav-auth-slot"></div>
+  </nav>
+
+  <div class="form-wrap">
+    <h2>Create your account</h2>
+    <form id="signup-form">
+      <input type="text" id="name" placeholder="Full name" required />
+      <input type="email" id="email" placeholder="Email address" required />
+      <input type="tel" id="phone" placeholder="Phone number" />
+      <input type="text" id="address" placeholder="Delivery address (city, area)" />
+      <input type="password" id="password" placeholder="Password (min 6 characters)" minlength="6" required />
+      <button type="submit" class="btn btn-primary">Sign up</button>
+      <p id="form-msg" class="form-msg"></p>
+    </form>
+    <p style="text-align:center; margin-top:14px; font-size:0.9rem;">
+      Already have an account? <a href="login.html" style="color:var(--color-accent); font-weight:600;">Login</a>
+    </p>
+  </div>
+
+  <script src="js/api.js"></script>
+  <script src="js/auth.js"></script>
+</body>
+</html>
