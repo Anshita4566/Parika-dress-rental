@@ -27,7 +27,7 @@ async function loadProducts() {
         <div class="card-body">
           <span class="tag">${p.category}</span>
           <h3>${p.name}</h3>
-          <p class="price">₹${p.rentPricePerDay} / day</p>
+          <p class="price">₹${p.rentPricePerDay} / 5 days</p>
         </div>
       </div>
     `
