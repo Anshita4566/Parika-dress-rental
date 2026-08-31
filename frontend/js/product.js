@@ -19,8 +19,9 @@ function renderProduct(p) {
     <div class="detail-info">
       <span class="tag">${p.category}</span>
       <h1>${p.name}</h1>
-      <p class="price-tag">₹${p.rentPricePerDay} for first 5 days ${p.securityDeposit ? `+ ₹${p.securityDeposit} deposit` : ""}</p>
-      <p style="font-size:0.8rem; color:var(--color-ink-soft); margin-top:-8px;">₹100/day extra after 5 days</p>
+      
+      <p class="price-tag">₹${p.rentPricePerDay} for first 5 days ${p.securityDeposit ? `+ ₹${p.securityDeposit} refundable deposit` : ""}</p>
+      <p style="font-size:0.8rem; color:var(--color-ink-soft); margin-top:-8px;">₹100/day extra after 5 days · Deposit returned after dress is returned in good condition</p>
       <p>${p.description}</p>
       <p style="margin-top:10px; font-size:0.85rem; color:var(--color-ink-soft);">
         Available sizes: ${p.size.join(", ")}
