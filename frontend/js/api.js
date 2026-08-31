@@ -1,5 +1,5 @@
 // Backend server ka base URL - agar deploy karo to isse apne live backend URL se replace karna
-const API_BASE = "http://localhost:5000/api";
+const API_BASE = "https://rento-backend-rc99.onrender.com/api";
 
 // Helper function jo har API call ke liye reuse hoga
 async function apiRequest(endpoint, method = "GET", body = null, needsAuth = false) {
