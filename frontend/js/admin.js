@@ -83,6 +83,37 @@ function editProduct(p) {
   productForm.scrollIntoView({ behavior: "smooth" });
 }
 
+// ============ CONTACT MESSAGES ============
+async function loadContactMessages() {
+  const messagesEl = document.getElementById("admin-messages-list");
+  if (!messagesEl) return;
+
+  try {
+    const messages = await apiRequest("/contact", "GET", null, true);
+
+    if (messages.length === 0) {
+      messagesEl.innerHTML = `<tr><td colspan="5">No messages yet.</td></tr>`;
+      return;
+    }
+
+    messagesEl.innerHTML = messages
+      .map(
+        (m) => `
+      <tr>
+        <td>${m.name}</td>
+        <td>${m.email}</td>
+        <td>${m.phone || "-"}</td>
+        <td style="max-width:250px;">${m.message}</td>
+        <td>${new Date(m.createdAt).toLocaleDateString("en-IN")}</td>
+      </tr>
+    `
+      )
+      .join("");
+  } catch (err) {
+    messagesEl.innerHTML = `<tr><td colspan="5">Error: ${err.message}</td></tr>`;
+  }
+}
+
 // ============ LIST + DELETE PRODUCTS ============
 async function loadAdminProducts() {
   const listEl = document.getElementById("admin-product-list");
