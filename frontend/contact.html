@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Contact Us — Rento</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:wght@500;600&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css?v=2" />
+</head>
+<body>
+
+  <nav class="navbar">
+    <a href="index.html" class="logo">Parika<span>.</span></a>
+    <div class="nav-links" id="nav-auth-slot"></div>
+  </nav>
+
+  <div class="form-wrap" style="max-width: 600px;">
+    <h2>Get in Touch</h2>
+    <p style="text-align:center; color:var(--color-ink-soft); font-size:0.9rem; margin-bottom:20px;">
+      Questions about a booking, sizing, or anything else? Send us a message.
+    </p>
+
+    <div style="text-align:center; margin-bottom: 24px; font-size:0.9rem; color:var(--color-ink-soft);">
+      📧 anshitag01@gmail.com &nbsp;|&nbsp; 📞 +91 7400545127 &nbsp;|&nbsp; 📍 Indore, Madhya Pradesh
+    </div>
+
+    <form id="contact-form">
+      <input type="text" id="contact-name" placeholder="Your name" required />
+      <input type="email" id="contact-email" placeholder="Your email" required />
+      <input type="tel" id="contact-phone" placeholder="Phone (optional)" />
+      <textarea id="contact-message" placeholder="Your message" rows="5" required style="width:100%; padding:12px; margin-bottom:14px; border:1px solid var(--color-line); border-radius:var(--radius); font-family:var(--font-body);"></textarea>
+      <button type="submit" class="btn btn-primary">Send Message</button>
+      <p id="form-msg" class="form-msg"></p>
+    </form>
+  </div>
+
+  <script src="js/api.js"></script>
+  <script src="js/contact.js"></script>
+</body>
+</html>

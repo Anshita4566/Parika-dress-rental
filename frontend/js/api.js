@@ -44,6 +44,7 @@ function renderNavAuthState() {
 
   if (user) {
     authSlot.innerHTML = `
+      <a href="contact.html">Contact</a>
       <a href="mybookings.html">My Bookings</a>
       ${user.role === "admin" ? '<a href="admin.html">Admin</a>' : ""}
       <span style="color:var(--color-ink-soft); font-size:0.85rem;">Hi, ${user.name.split(" ")[0]}</span>
@@ -55,10 +56,10 @@ function renderNavAuthState() {
     });
   } else {
     authSlot.innerHTML = `
+      <a href="contact.html">Contact</a>
       <a href="login.html">Login</a>
       <a href="signup.html" class="btn btn-primary" style="padding:8px 18px;">Sign up</a>
     `;
   }
 }
-
 document.addEventListener("DOMContentLoaded", renderNavAuthState);
