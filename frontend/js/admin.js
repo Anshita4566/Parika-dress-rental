@@ -160,24 +160,7 @@ async function loadAllBookings() {
 
   try {
     const bookings = await apiRequest("/bookings", "GET", null, true);
-//     bookingsEl.innerHTML = bookings
-//       .map(
-//         (b) => `
-//       <tr>
-//         <td>${b.user?.name || "Unknown"} (${b.user?.email || "-"})</td>
-//         <td>${b.product?.name || "Deleted"}</td>
-//         <td>${new Date(b.startDate).toLocaleDateString("en-IN")}</td>
-//         <td>${new Date(b.endDate).toLocaleDateString("en-IN")}</td>
-//         <td>₹${b.totalPrice}</td>
-//         <td><span class="status-badge status-${b.status}">${b.status}</span></td>
-//       </tr>
-//     `
-//       )
-//       .join("");
-//   } catch (err) {
-//     bookingsEl.innerHTML = `<tr><td colspan="6">Error: ${err.message}</td></tr>`;
-//   }
-// }
+
     bookingsEl.innerHTML = bookings
       .map(
         (b) => `
@@ -289,3 +272,4 @@ function renderTopProductsChart(topProducts) {
 loadAdminProducts();
 loadAllBookings();
 loadAnalytics();
+loadContactMessages();
