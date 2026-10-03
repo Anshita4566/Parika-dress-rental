@@ -228,14 +228,19 @@ const cancelBooking = async (req, res) => {
     const booking = await Booking.findById(req.params.id);
     if (!booking) return res.status(404).json({ message: "Booking not found" });
 
-    // user sirf apni hi booking cancel kar sake (admin kisi ki bhi kar sake)
     if (booking.user.toString() !== req.user._id.toString() && req.user.role !== "admin") {
       return res.status(403).json({ message: "Not authorized to cancel this booking" });
     }
 
+    if (booking.status !== "confirmed") {
+      return res.status(400).json({ message: `Only confirmed bookings can be cancelled (current status: ${booking.status})` });
+    }
+
     booking.status = "cancelled";
+    booking.refundStatus = "not_applicable";
     await booking.save();
-    res.json({ message: "Booking cancelled successfully" });
+
+    res.json({ message: "Booking cancelled. As per our policy, no refund is given on cancellation." });
   } catch (error) {
     res.status(500).json({ message: error.message });
   }

@@ -187,6 +187,9 @@ const refundDeposit = async (req, res) => {
   try {
     const booking = await Booking.findById(req.params.id).populate("product");
     if (!booking) return res.status(404).json({ message: "Booking not found" });
+    if (booking.status === "cancelled") {
+  return res.status(400).json({ message: "Cancelled bookings are not eligible for a refund" });
+}
 
     if (!booking.razorpayPaymentId) {
       return res.status(400).json({ message: "No payment found for this booking" });

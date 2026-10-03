@@ -45,9 +45,10 @@ function formatDate(d) {
 }
 
 async function cancelBooking(id) {
-  if (!confirm("Are you sure you want to cancel this booking?")) return;
+  if (!confirm("Cancellation policy: If you cancel, NO refund will be given (rent and deposit are non-refundable). Do you still want to cancel?")) return;
   try {
-    await apiRequest(`/bookings/${id}/cancel`, "PUT", null, true);
+    const result = await apiRequest(`/bookings/${id}/cancel`, "PUT", null, true);
+    alert(result.message);
     loadMyBookings();
   } catch (err) {
     alert(`Error: ${err.message}`);

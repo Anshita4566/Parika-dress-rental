@@ -31,6 +31,7 @@ function renderProduct(p) {
         <h3 style="font-family:var(--font-display);">Book this dress</h3>
 
         <div class="advance-notice">📅 Bookings must be made at least 10 days in advance</div>
+        <div class="advance-notice">🚫 No refund on cancellation. Deposit is refunded only after the dress is returned in good condition.</div>
 
         <label for="start-date">Pickup date</label>
         <input type="date" id="start-date" min="${minBookingDateISO()}" />
