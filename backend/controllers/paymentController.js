@@ -5,9 +5,12 @@ const Product = require("../models/Product");
 const Booking = require("../models/Booking");
 const calculateRentalPrice = require("../utils/calculatePrice");
 
+const KEY_ID = (process.env.RAZORPAY_KEY_ID || "").trim();
+const KEY_SECRET = (process.env.RAZORPAY_KEY_SECRET || "").trim();
+
 const razorpay = new Razorpay({
-  key_id: process.env.RAZORPAY_KEY_ID,
-  key_secret: process.env.RAZORPAY_KEY_SECRET,
+  key_id: KEY_ID,
+  key_secret: KEY_SECRET,
 });
 
 /*
@@ -59,7 +62,7 @@ const createOrder = async (req, res) => {
       orderId: order.id,
       amount: totalAmount,
       currency: "INR",
-      keyId: process.env.RAZORPAY_KEY_ID,
+      keyId: KEY_ID,
     });
   } catch (error) {
     res.status(500).json({ message: error.message });
@@ -91,14 +94,15 @@ const verifyPayment = async (req, res) => {
 
   // Signature verify karo
   const body = razorpay_order_id + "|" + razorpay_payment_id;
-  const expectedSignature = crypto
-    .createHmac("sha256", process.env.RAZORPAY_KEY_SECRET)
-    .update(body)
-    .digest("hex");
+ const expectedSignature = crypto
+  .createHmac("sha256", KEY_SECRET)
+  .update(body)
+  .digest("hex");
 
-  if (expectedSignature !== razorpay_signature) {
-    return res.status(400).json({ message: "Payment verification failed. Signature mismatch." });
-  }
+if (expectedSignature !== razorpay_signature) {
+  console.error("Signature mismatch. secretLen:", KEY_SECRET.length);
+  return res.status(400).json({ message: "Payment verification failed. Signature mismatch." });
+}
 
   // Signature sahi hai - ab wahi conflict-proof transaction booking banao
   const start = new Date(startDate);
